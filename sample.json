@@ -1,0 +1,16 @@
+d=[
+	{
+		owner: 'WHELAN, STEPHEN JAMES',
+		address: '201 PATTERSON AVENUE',
+		land: 183700,
+		building: 276400,
+		assess: 460100
+	},
+	{
+		owner: 'WHELAN, STEPHEN JAMES',
+		address: '201 PATTERSON AVENUE',
+		land: 183700,
+		building: 276400,
+		assess: 460100
+	}
+];

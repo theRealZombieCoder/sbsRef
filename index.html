@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SBS Referendum 2016</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="./app.css" rel="stylesheet">
+</head>
+<body>
+
+<div class='titleBar'>
+<h1>The 2016 Shrewsbury Boro School Referendum</h1>
+<h2>and its impact on your property taxes</h2>
+</div>
+    
+<div id="allQs" class="allQs">
+	<div id="q1" class="qContainer qContainerFirst">
+		<label for="qFilter">Search by owner name or address</label>
+		<input id="qFilter" class="qInput" type="text" />
+	</div>
+
+	<div id="q2" class="qContainer">
+		<label for="q2Input">Select the property below</label>
+		<div id="matchesContainer" class="row">
+		</div>
+	</div>
+
+	<div id="q3" class="qContainerFinal">
+		<span id="currentAssessment"></span>
+	</div>
+	
+	<div class="buttonPanel">
+		<button id="startOver" onclick="document.location = document.location; return false;" class="btn btn-success">Start Over</button>
+	</div>
+</div>
+
+<script
+  src="http://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="./data.js"></script>
+<script src="./app.js"></script>
+<script>
+	$(document).ready(function () {
+		questionManager.initPage();
+	});
+</script>
+</body>
+</html>
