@@ -9,6 +9,10 @@ var questionManager = (function() {
 	};
 
 	var attachEvents = function() {
+		$("#search").on("click", function() {
+			doFilter();
+		});
+
 		$("#qFilter").on('keypress', function(ev) {
 			if (ev.which === 13) {
 				doFilter();
@@ -23,6 +27,7 @@ var questionManager = (function() {
 	};
 
 	var doFilter = function () {
+		$("#search").hide();
 		var filterText = $("#qFilter").val().toLowerCase().trim();
 		console.log ("Searched for: " + filterText);
 		if (filterText) {
@@ -68,15 +73,25 @@ var questionManager = (function() {
 	var fnTemplateInfo = function (o) {
 		var ar = o.split("~");
 		var totalA = parseFloat(ar[4]);
-		return "<div>Your current assessment is: $" + totalA.toLocaleString() + "</div>" + 
-		"<div> If all 4 Questions pass, your property taxes would go up: " +
+		return "<div> If all 4 Questions pass, your property taxes would go up *: " +
 		"<div class='increaseTotal'>" + getTaxIncreaseAsStr(totalA, 1, 4) + " per year, or " +
 		getTaxIncreaseAsStr(totalA, 20, 4) + " over 20 years</div>" +
 		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 1) + " per year if only Question 1 passes;</div>" + 
 		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 2) + " per year if only Questions 1 and 2 pass;</div>" + 
 		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 3) + " per year if only Questions 1, 2 and 3 pass;</div>" + 
+		"<hr/><div class='assessment'>* Based on the current assessment of: $" + totalA.toLocaleString() + " and </div>" + 
+		getSourceInfo() + 
 		"</div>";
 	};
+
+	var getSourceInfo = function() {
+		return "<div class='assessment'>data provided in \"Shrewsbury Board of Education Referendum Information\" document dated " +
+		" December 13th, 2016 [sic]</div><ul class='source'>" + 
+		"<li>Question 1: Renovations - 0.0533</li>" + 
+		"<li>Question 2: Addition & Renovations - 0.0644</li>" +
+		"<li>Question 3: Solar Panels - 0.0067</li>" + 
+		"<li>Question 4: Land Aquisition & Development - 0.0131</li>";
+	}
 
 	var getTaxIncreaseAsStr = function(n, years, refQuestions) {
 		console.log ("Amt in = " + n);

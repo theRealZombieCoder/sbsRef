@@ -32,27 +32,27 @@ h2 {
 }
 
 .allQs {
-	margin: 0 10% 0 10%;
+	margin: 0 2% 0 2%;
 }
 
 .qContainer {
-	margin-top: 15%;
+	margin-top: 20px;
 	/*padding: 0 20px 0 20px;*/
-	font-size: 2.6em;
+	font-size: 2.0em;
 	width: 100%;
 	display: none;
 }
 
 .qContainerFinal {
 	margin-top: 10px;
-	padding: 0 20px 0 20px;
+	/*padding: 0 20px 0 20px;*/
 	font-size: 2em;
 	width: 100%;
 	display: none;
 }
 
 .qContainerFinal span div {
-	font-size: 4.0em;
+	font-size: 2.0em;
 }
 
 .qContainerFirst {
@@ -79,7 +79,7 @@ h2 {
 }
 
 .buttonPanel {
-	margin-top: 40px;
+	margin: 40px 0 0 0;
 }
 
 .addressesLabel {
@@ -89,4 +89,17 @@ h2 {
 .addressLine:hover {
 	border: 1px solid #c0c0c0;
 	background-color: #feffc2;
+}
+
+div#matchesContainer {
+	margin-left: 0;
+}
+
+.qContainerFinal span div.assessment {
+	font-size: 0.5em;
+}
+
+.qContainerFinal span ul.source {
+	font-size: 0.5em;
+	color: #303030;
 }
