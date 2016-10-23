@@ -79,7 +79,7 @@ var questionManager = (function() {
 		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 1) + " per year if only Question 1 passes;</div>" + 
 		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 2) + " per year if only Questions 1 and 2 pass;</div>" + 
 		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 3) + " per year if only Questions 1, 2 and 3 pass;</div>" + 
-		"<hr/><div class='assessment'>* Based on the current assessment of: $" + totalA.toLocaleString() + " and </div>" + 
+		"<hr/><div class='assessment'>* Based on the current assessment of: <b>$" + totalA.toLocaleString() + ".00</b> and </div>" + 
 		getSourceInfo() + 
 		"</div>";
 	};
