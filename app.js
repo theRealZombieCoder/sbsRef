@@ -128,7 +128,7 @@ var questionManager = (function() {
 	};
 
 	var doSelectAddress = function(o) {
-		var id = $(o).attr("data-address-id");
+		var id = "~" + $(o).attr("data-address-id") + "~";
 		var thisAddress = d.filter(function(o) { return o.indexOf(id) > 0; })[0];
 		var htmlInfo = fnTemplateInfo(thisAddress);
 		$("#currentAssessment").html(htmlInfo);
