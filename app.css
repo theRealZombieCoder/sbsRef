@@ -72,6 +72,12 @@ h2 {
 	font-size: 1em;
 }
 
+.qContainerFinal span div div.increaseOthers {
+	font-weight: normal;
+	font-size: 0.5em;
+	color: #303030;
+}
+
 .buttonPanel {
 	margin-top: 40px;
 }

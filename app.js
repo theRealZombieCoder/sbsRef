@@ -23,7 +23,7 @@ var questionManager = (function() {
 	};
 
 	var doFilter = function () {
-		var filterText = $("#qFilter").val().toLowerCase();
+		var filterText = $("#qFilter").val().toLowerCase().trim();
 		console.log ("Searched for: " + filterText);
 		if (filterText) {
 			var matches = d.filter(function(a) {
@@ -67,25 +67,49 @@ var questionManager = (function() {
 
 	var fnTemplateInfo = function (o) {
 		var ar = o.split("~");
-		var totalA = parseFloat(ar[4]);;
+		var totalA = parseFloat(ar[4]);
 		return "<div>Your current assessment is: $" + totalA.toLocaleString() + "</div>" + 
 		"<div> If all 4 Questions pass, your property taxes would go up: " +
-		"<div class='increaseTotal'>" + getTaxIncreaseAsStr(totalA, 1) + " per year, or </div>" +
-		"<div class='increaseTotal'>" + getTaxIncreaseAsStr(totalA, 20) + " over 20 years</div>" +
+		"<div class='increaseTotal'>" + getTaxIncreaseAsStr(totalA, 1, 4) + " per year, or " +
+		getTaxIncreaseAsStr(totalA, 20, 4) + " over 20 years</div>" +
+		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 1) + " per year if only Question 1 passes;</div>" + 
+		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 2) + " per year if only Questions 1 and 2 pass;</div>" + 
+		"<div class='increaseOthers'>" + getTaxIncreaseAsStr(totalA, 1, 3) + " per year if only Questions 1, 2 and 3 pass;</div>" + 
 		"</div>";
 	};
 
-	var getTaxIncreaseAsStr = function(n, years) {
+	var getTaxIncreaseAsStr = function(n, years, refQuestions) {
 		console.log ("Amt in = " + n);
-		var inc = getTaxIncrease(n) * years;
+		var inc = getTaxIncrease(n, refQuestions) * years;
 		console.log ("Increase = " + inc);
 		inc = Math.round(inc * 100) / 100;
 		console.log ("Rounded = " + inc);
 		return "$" + inc.toLocaleString();
 	}
 
-	var getTaxIncrease = function(n) {
-		return .001395 * n;
+	var getTaxIncrease = function(n, refQuestions) {
+		var rate = 0.0;
+		console.log("Questions sent = " + refQuestions);
+		switch(refQuestions) {
+			case 4:
+				console.log ("matched 4");
+				rate = .001395;
+				break;
+			case 3: 
+				rate = .001264;
+				break;
+			case 2:
+				rate = .001197;
+				break;
+			case 1:
+				rate = .000533;
+				break;
+			default:
+				rate = 0;
+				break;
+		}
+		//return .001395 * n;
+		return rate * n;
 	};
 
 	var doSelectAddress = function(o) {
